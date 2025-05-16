@@ -195,7 +195,9 @@ return $badges;
 $db = new SQLite3($c['db_path']);
 $db->exec('PRAGMA foreign_keys = ON');
 if (function_exists('remove_arabic_diacritics')) {
-        $db->createFunction('REMOVE_DIACRITICS', 'remove_arabic_diacritics', 1, SQLITE3_DETERMINISTIC);
+        // Register custom SQLite function for removing diacritics
+    $db->createFunction('remove_arabic_diacritics', 'remove_arabic_diacritics', 1);
+
     }
 // Create tables if they don't exist
 $db->exec("
@@ -1989,10 +1991,11 @@ while ($ayah = $ayahs->fetchArray(SQLITE3_ASSOC)) {
             $where .= "WHERE collection = ?";
             $params[] = $collection;
         } elseif ($search) {
-            $where .= "WHERE text LIKE ? OR narrator LIKE ?";
-            $params[] = "%$search%";
-            $params[] = "%$search%";
-        }
+    $search_clean = remove_arabic_diacritics($search);
+    $where .= "WHERE remove_arabic_diacritics(arabic) LIKE ? OR urdu LIKE ?";
+    $params[] = "%$search_clean%";
+    $params[] = "%$search%";
+}
         
         echo '<div class="row mb-4">
             <div class="col-md-6">
