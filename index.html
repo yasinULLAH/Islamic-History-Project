@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islamic History Portal - Project Overview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff; /* Bootstrap Blue - can be changed */
+            --secondary-color: #6c757d; /* Bootstrap Gray */
+            --light-bg: #f8f9fa;
+            --dark-text: #212529;
+            --light-text: #f8f9fa;
+            --accent-color: #17a2b8; /* Bootstrap Info */
+            --card-bg: #ffffff;
+            --border-color: #dee2e6;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            font-size: 16px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px 0; /* Padding top/bottom, side padding on sections */
+        }
+
+        /* Header Section */
+        .hero-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: var(--light-text);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom-left-radius: var(--border-radius);
+            border-bottom-right-radius: var(--border-radius);
+            margin-bottom: 40px;
+        }
+        .hero-header h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.8em;
+            margin-bottom: 0.3em;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        .hero-header .subtitle {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        .hero-header .cta-button {
+            display: inline-block;
+            background-color: var(--light-bg);
+            color: var(--primary-color);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 50px; /* Pill shape */
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            margin-top: 10px;
+        }
+        .hero-header .cta-button:hover {
+            background-color: #e9ecef;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Main Navigation (optional, if needed beyond section links) */
+        /*
+        nav {
+            background-color: var(--card-bg);
+            padding: 10px 0;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+        */
+
+        /* Section Styling */
+        section {
+            background-color: var(--card-bg);
+            padding: 30px 40px;
+            margin-bottom: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        section h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        section h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5em;
+            color: var(--accent-color);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        /* Feature List Styling */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .feature-item {
+            background-color: var(--light-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            border-left: 5px solid var(--primary-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+        }
+        .feature-item h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.2em;
+        }
+        .feature-item ul {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+        .feature-item ul li {
+            font-size: 0.95em;
+            margin-bottom: 5px;
+        }
+
+
+        /* Setup Instructions Styling */
+        #setup ol {
+            list-style-type: none;
+            padding-left: 0;
+            counter-reset: setup-counter;
+        }
+        #setup ol li {
+            counter-increment: setup-counter;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 40px;
+            font-size: 1.05em;
+        }
+        #setup ol li::before {
+            content: counter(setup-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+        }
+        #setup ol li ul {
+            margin-top: 8px;
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+        #setup ol li ul li {
+            padding-left: 0;
+            margin-bottom: 5px;
+            font-size: 0.95em;
+        }
+         #setup ol li ul li::before {
+            display: none; /* Hide counter for sub-list items */
+        }
+
+
+        code {
+            background-color: #e9ecef;
+            padding: 0.2em 0.4em;
+            margin: 0;
+            font-size: 85%;
+            border-radius: 3px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        }
+        pre code {
+            display: block;
+            padding: 15px;
+            overflow-x: auto;
+        }
+
+        .video-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+        video {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            border: 1px solid var(--border-color);
+        }
+        .video-container p small {
+            display: block;
+            margin-top: 10px;
+            color: var(--secondary-color);
+        }
+
+        .note, .important {
+            padding: 15px 20px;
+            margin: 25px 0;
+            border-radius: var(--border-radius);
+            border-left-width: 5px;
+            border-left-style: solid;
+        }
+        .note {
+            background-color: #e6f7ff; /* Light blue */
+            border-left-color: #1890ff; /* Blue */
+            color: #0050b3;
+        }
+        .important {
+            background-color: #fffbe6; /* Light yellow */
+            border-left-color: #faad14; /* Yellow */
+            color: #ad6800;
+        }
+        .important strong {
+            color: #d4380d; /* Darker red/orange for emphasis */
+        }
+
+        /* GitHub Button */
+        .github-link-section {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--light-bg); /* Slightly different background */
+            margin-top: 30px;
+            border-radius: var(--border-radius);
+        }
+        .github-link-section h2 {
+            border-bottom: none; /* Remove default border for this h2 */
+            display: block; /* Override inline-block */
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .github-link-section .button {
+            background-color: #24292e; /* GitHub Dark */
+            color: white;
+            padding: 12px 30px;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .github-link-section .button:hover {
+            background-color: #1b1f23; /* GitHub Darker */
+            transform: scale(1.05);
+        }
+        .github-link-section p small {
+            display: block;
+            margin-top: 15px;
+            color: var(--secondary-color);
+        }
+
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px 0;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.95em;
+            color: var(--secondary-color);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+            .hero-header {
+                padding: 40px 15px;
+            }
+            .hero-header h1 {
+                font-size: 2.2em;
+            }
+            .hero-header .subtitle {
+                font-size: 1.1em;
+            }
+            section {
+                padding: 20px;
+            }
+            section h2 {
+                font-size: 1.8em;
+            }
+            section h3 {
+                font-size: 1.3em;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr; /* Stack features on smaller screens */
+            }
+            #setup ol li {
+                padding-left: 35px; /* Adjust for smaller counter */
+            }
+            #setup ol li::before {
+                width: 25px;
+                height: 25px;
+                line-height: 25px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-header">
+        <div class="container">
+            <h1>Islamic History Portal</h1>
+            <p class="subtitle">Explore the rich tapestry of Islamic civilization, Quranic wisdom, and Prophetic traditions.</p>
+            <a href="#features" class="cta-button">Discover Features</a>
+            <a href="#demo" class="cta-button">Watch Demo</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Optional Navigation for quick jumps - can be removed if hero buttons are sufficient -->
+        <!--
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#setup">Setup</a></li>
+                <li><a href="#usage">Usage</a></li>
+                <li><a href="#author">Author</a></li>
+            </ul>
+        </nav>
+        -->
+
+        <section id="about">
+            <h2>About The Project</h2>
+            <p>The Islamic History Portal is a single-file PHP web application designed to provide users with a rich, interactive platform to explore historical events (both Islamic and general), search and read Quranic ayahs with Urdu translation, and browse a collection of Hadiths. The application features role-based access, content management, multi-language support (English/Urdu), and gamification elements like points and badges.</p>
+            <p>This project is built with PHP and SQLite, utilizing Bootstrap 5 for responsive design, Leaflet.js for interactive maps, and Chart.js for visualizations. It aims to be an accessible and educational resource for anyone interested in Islamic history and teachings.</p>
+        </section>
+
+        <section id="features">
+            <h2>Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>Single PHP File Architecture</h4>
+                    <p>Entire backend and frontend logic contained within one PHP file for ease of deployment.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>SQLite Database</h4>
+                    <p>Lightweight, file-based database for all application data.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Quran Integration</h4>
+                    <ul>
+                        <li>Automatic loading from <code>data.AM</code> file.</li>
+                        <li>Arabic, Urdu translation, Surah/Ayah info.</li>
+                        <li>Searchable interface.</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h4>Role-Based Access</h4>
+                    <p>Admin, Ulama, User, and Public roles with distinct permissions.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Geo-Features & Maps</h4>
+                    <p>Interactive event maps (Leaflet.js), location suggestions, "Zoom to My Location" and live tracking.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Content Management</h4>
+                    <p>Categorized events, infographic-style timeline, user submissions with approval workflow.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Religious Content Hub</h4>
+                    <p>Searchable Quran and Hadith databases, with content linking to historical events.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Multi-Language & RTL</h4>
+                    <p>English/Urdu interfaces with full RTL support for Urdu.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Gamification</h4>
+                    <p>Points system and achievement badges to encourage user engagement.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Modern UI/UX</h4>
+                    <p>Responsive design (Bootstrap 5) with Light/Dark mode themes.</p>
+                </div>
+                 <div class="feature-item">
+                    <h4>Admin Utilities</h4>
+                    <p>User management, full content control, badge management, and database backup/restore.</p>
+                </div>
+                 <div class="feature-item">
+                    <h4>Secure & Robust</h4>
+                    <p>Includes password hashing, input sanitization, and error handling.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="demo">
+            <h2>Application Demo</h2>
+            <p>Watch this short video to see the Islamic History Portal in action, showcasing its main features, user interface, and overall functionality.</p>
+            <div class="video-container">
+                <video controls width="800" poster="placeholder-video-poster.png">
+                    <source src="app.mp4" type="video/mp4">
+                    Your browser does not support the video tag. You can <a href="app.mp4" download>download the video</a> instead.
+                </video>
+                <p><small>(Ensure <code>app.mp4</code> is in the same directory as this HTML file, or update the path. A poster image like <code>placeholder-video-poster.png</code> can be used too.)</small></p>
+            </div>
+        </section>
+
+        <section id="setup">
+            <h2>Setup Instructions</h2>
+            <p>Setting up the Islamic History Portal is designed to be straightforward:</p>
+            <ol>
+                <li><strong>Web Server & PHP:</strong> A web server (Apache, Nginx) with PHP (7.4+ recommended) and the <code>pdo_sqlite</code> extension enabled.</li>
+                <li><strong>Download Files:</strong> Get <code>index.php</code> (the application) and <code>data.AM</code> (Quran data).</li>
+                <li><strong>File Placement:</strong> Place both <code>index.php</code> and <code>data.AM</code> in the same web-accessible directory.</li>
+                <li><strong>Directory Permissions:</strong> The web server user must have **write permissions** for the directory containing <code>index.php</code>. This allows the application to create the <code>islamic_history_app.sqlite</code> database and <code>error.log</code> file.</li>
+                <li><strong>Access:</strong> Navigate to <code>index.php</code> in your browser.</li>
+            </ol>
+            <div class="note">
+                <p><strong>First Run - Quran Data Import:</strong> The application will automatically parse <code>data.AM</code> and populate the Quran ayahs on its first run if the database is empty. The <code>data.AM</code> file format is:
+                <br><code>[Arabic Ayah] ترجمہ: [Urdu Translation]<br/>س [3-digit Surah] آ [3-digit Ayah]</code> (each entry on a new line).
+                </p>
+            </div>
+            <div class="important">
+                <p><strong>Default Admin Credentials:</strong>
+                <br>Username: <code>admin</code>
+                <br>Password: <code>password123</code>
+                <br><strong>Log in immediately and change this password for security!</strong>
+                </p>
+            </div>
+        </section>
+
+        <section id="usage">
+            <h2>How to Use The Portal</h2>
+            
+            <h3>Public Users (Read-Only Access)</h3>
+            <p>Visitors can freely explore approved content: browse historical events (Islamic/General), view events on the interactive map and timeline, search Quranic ayahs (Arabic/Urdu), and read Hadiths. Language and theme (Light/Dark) can be switched.</p>
+
+            <h3>Registered Users</h3>
+            <p>Upon registration, users gain the ability to contribute by suggesting new historical events and Hadiths (which await moderation). They can also bookmark content for easy access and earn points/badges for their contributions, viewable on their profile.</p>
+
+            <h3>Ulama (Content Moderators)</h3>
+            <p>Ulama have enhanced permissions to moderate user-submitted content (approve/reject events and Hadiths) via the Admin Panel. They can also add religious content directly (often auto-approved) and link ayahs/Hadiths to events.</p>
+
+            <h3>Admin (Full System Control)</h3>
+            <p>Administrators possess complete control, including all Ulama capabilities, plus: user management (roles, deletion), full content editing/deletion, badge system management, and critical database backup and restore functionalities.</p>
+        </section>
+
+        <section id="author">
+            <h2>About the Author</h2>
+            <p>This Islamic History Portal was conceived and developed by <strong>Yasin Ullah</strong>, a passionate developer from Pakistan, with the aim of creating an accessible and informative resource on Islamic history and teachings.</p>
+        </section>
+
+        <section class="github-link-section">
+            <h2>View on GitHub</h2>
+            <p>Access the full source code, contribute to the project, or report issues on GitHub.</p>
+            <a href="YOUR_GITHUB_REPOSITORY_URL_HERE" class="button" target="_blank" rel="noopener noreferrer">
+                <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" style="display: inline-block; fill: currentColor; vertical-align: text-bottom; margin-right: 5px;">
+                    <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.19.01-.82.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21-.15.46-.55.38A8.013 8.013 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+                </svg>
+                View Project
+            </a>
+            <p><small>(Remember to replace <code>YOUR_GITHUB_REPOSITORY_URL_HERE</code> with your actual repository link!)</small></p>
+        </section>
+
+        <footer>
+            <p>© <span id="currentYear"></span> Islamic History Portal Project. Developed with <span style="color: #e25555;">♥</span> by Yasin Ullah (Pakistani).</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Optional: Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
